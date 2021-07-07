@@ -1,8 +1,7 @@
 import sys
 sys.path.append('C:\PythonAnaconda\Lib\site-packages')
 from datetime import date
-from cal_setup import get_calendar_service
-import list_calendars 
+
 import os
 
 from notion_client import Client
