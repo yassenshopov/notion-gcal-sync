@@ -1,1 +1,1 @@
-# Notion-GCal-Sync
+# Notion-GCal Sync
