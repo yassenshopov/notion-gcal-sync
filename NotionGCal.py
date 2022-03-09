@@ -1,11 +1,5 @@
-import sys
-sys.path.append('C:\PythonAnaconda\Lib\site-packages')
 from datetime import date
-
-import os
-
 from notion_client import Client
-
 import datetime
 import pickle
 import os.path
@@ -13,22 +7,19 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-# If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 #######################################
 
 CREDENTIALS_FILE = 'credentials.json'
 
-NOTION_TOKEN =  #The secret code from Notion Integration (it should look like this: NOTION_TOKEN = "secret_XXXXXXXXXXXXX")
+NOTION_TOKEN = "secret_ayt6ESHKwLE6YJhq7BbwToxlf3qLk2QtJIaXtRUhC0H"#The secret code from Notion Integration (it should look like this: NOTION_TOKEN = "secret_XXXXXXXXXXXXX")
 
-database_id =  #Get the string of numbers before the "?" on your Notion dashboard URL (it should look like this: database_id = "xxxxxxxxxxxxxxxxxxxxxxxxxx")
+database_id = "9997be07a79e416d99a0ebca49d998f8" #Get the string of numbers before the "?" on your Notion dashboard URL (it should look like this: database_id = "xxxxxxxxxxxxxxxxxxxxxxxxxx")
 
-urlRoot =  #open up a task and then copy the URL root up to the "p=" (it should look like this: urlRoot = "https://www.notion.so/xxxxx/xxxxxx-xxxxxxxxx?")
+dateProperty = "Date:" #The name of the 'Date' property for your items in your Notion Database (it should look like this: dateProperty = 'Date')
 
-dateProperty =  #The name of the 'Date' property for your items in your Notion Database (it should look like this: dateProperty = 'Date')
-
-nameProperty =  #The name of the 'Title' property for your items in your Notion Database (it should look like this: nameProperty = 'Name')
+nameProperty = "Name" #The name of the 'Title' property for your items in your Notion Database (it should look like this: nameProperty = 'Name')
 
 ########################################
 
@@ -59,23 +50,17 @@ def get_calendar_service():
 def list_calendars():
    service = get_calendar_service()
    # Call the Calendar API
-   #print('Getting list of calendars')
    calendars_result = service.calendarList().list().execute()
 
    calendars = calendars_result.get('items', [])
 
-   if not calendars:
-    #   print('No calendars found.')
-        print()
    for calendar in calendars:
        summary = calendar['summary']
        id = calendar['id']
-       #primary = "Primary" if calendar.get('primary') else ""
-       #print("%s\t%s\t%s" % (summary, id, primary))
    return calendars
 
 os.environ['NOTION_TOKEN'] = NOTION_TOKEN
-notion = Client(auth=os.environ["NOTION_TOKEN"])
+notion = Client(auth = os.environ["NOTION_TOKEN"])
 
 today = date.today()
 print("Today's date:", today)
@@ -87,6 +72,8 @@ if True:
 
     service = get_calendar_service()
     calendars = list_calendars()
+    for calendar in calendars:
+        print(calendar['summary'],"\n")
 
     while True:
            event_items = []
