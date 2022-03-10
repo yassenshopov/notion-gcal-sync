@@ -15,7 +15,7 @@ CREDENTIALS_FILE = 'credentials.json'
 
 NOTION_TOKEN = "secret_Bg53dmHuIFfzqbYyNZp9VrVFL4EenamUInis5UsQXH4"#The secret code from Notion Integration (it should look like this: NOTION_TOKEN = "secret_XXXXXXXXXXXXX")
 
-database_id = "c0881eda977e4f5888ee1558366971b7" #Get the string of numbers before the "?" on your Notion dashboard URL (it should look like this: database_id = "xxxxxxxxxxxxxxxxxxxxxxxxxx")
+database_id = "" #Get the string of numbers before the "?" on your Notion dashboard URL (it should look like this: database_id = "xxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 dateProperty = "Date:" #The name of the 'Date' property for your items in your Notion Database (it should look like this: dateProperty = 'Date')
 
